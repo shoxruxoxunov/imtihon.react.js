@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Brining from "../components/Brining";
-import Button from "../components/Button";
+
 
 function Home() {
   return (

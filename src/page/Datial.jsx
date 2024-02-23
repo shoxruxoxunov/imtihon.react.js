@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 import { useEffect, useState } from "react";
+import { addProduct } from "../redux/features/bascet/bascet";
 
 async function getData(url) {
   const req = await fetch(url);
@@ -11,7 +12,10 @@ async function getData(url) {
   return data;
 }
 function Datial() {
+  // const { total } = useSelector((store) => store.products);
+  // const alldata = useSelector((store) => store.products);
   const dispatch = useDispatch();
+  const [counter, setCounter] = useState(1);
   const { slug } = useParams();
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -55,11 +59,26 @@ function Datial() {
                       $ {data && item.price}
                     </p>
                     <div className="md:flex md:items-center flex justify-center ">
-                      <button className="btn md:btn-md ">-</button>
-                      <div className="font-bold text-[14px] text-black w-[16px] md:text-center flex items-center">
-                        0
+                      <button
+                        onClick={() => setCounter((prev) => prev - 1)}
+                        className="btn md:btn-md "
+                      >
+                        -
+                      </button>
+                      <div
+                        onClick={() =>
+                          dispatch(addProduct({ ...item, amount: counter }))
+                        }
+                        className="font-bold text-[14px] text-black w-[16px] md:text-center flex items-center"
+                      >
+                        {counter}
                       </div>
-                      <button className="btn md:btn-md md:mr-[16px]">+</button>
+                      <button
+                        onClick={() => setCounter((prev) => prev + 1)}
+                        className="btn md:btn-md md:mr-[16px]"
+                      >
+                        +
+                      </button>
                       <Link
                         // to="/headphones"
                         onClick={() =>

@@ -1,40 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import products from "../../../../data/data.json";
+
 const initialState = {
-  products,
-  amount: 0,
+  allProduct: [],
+  total: 0,
   price: 0,
 };
 
-const basketSlice = createSlice({
-  name: "basket",
+const productSlice = createSlice({
+  name: "products",
   initialState,
   reducers: {
-    incremnetProducts: (state, { payload }) => {
-      const item = state.products.find((item) => item.id === payload);
-      item.amount += 1;
-    },
-    decrementProducts: (state, { payload }) => {
-      const item = state.products.find((item) => item.id === payload);
-      item.amount -= 1;
-    },
-    removeItem: (state, { payload }) => {
-      state.products = state.products.filter((item) => item.id !== payload);
-    },
+    addProduct: (state, { payload }) => {
+      const findItem = state.allProduct.find(
+        (product) => product.id === payload.id
+      );
 
-    total: (state, { payload }) => {
-      let allPrice = 0;
-      let allAmount = 0;
-      state.products.forEach((item) => {
-        allPrice += item.amount * item.price;
-        allAmount += item.amount;
-      });
-      state.amount = allAmount;
-      state.price = allPrice;
+      console.log(findItem);
+
+      if (findItem) {
+        findItem.amount = payload.amount;
+      } else {
+        state.allProduct = [...state.allProduct, payload];
+      }
     },
   },
 });
 
-export const { incremnetProducts, decrementProducts, total, removeItem } =
-  basketSlice.actions;
-export default basketSlice.reducer;
+export default productSlice.reducer;
+export const { addProduct } = productSlice.actions;
