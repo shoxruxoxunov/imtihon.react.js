@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <section className="bg-black  ">
-        <div className="container bg-[url('./assets/home/mobile/image-header.jpg')] bg-center bg-cover lg:bg-[url('./assets/home/desktop/image-hero.jpg')] md:bg-[url('./assets/home/tablet/image-header.jpg')]">
+        <div className="container bg-[url('/assets/home/mobile/image-header.jpg')] bg-center bg-cover lg:bg-[url('/assets/home/desktop/image-hero.jpg')] md:bg-[url('/assets/home/tablet/image-header.jpg')]">
           <div className="flex flex-col items-center md:items-start md:w-96">
             <h3 className="lg:w-[199px] md:w-[199px] font-medium text-[14px] text-[#FFFFFF] opacity-[50%] pt-[128px] pb-[24px] md:text-center lg:ml-[80px] md:ml-0">
               NEW PRODUCT

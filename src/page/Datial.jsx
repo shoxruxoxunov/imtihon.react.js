@@ -12,8 +12,6 @@ async function getData(url) {
   return data;
 }
 function Datial() {
-  // const { total } = useSelector((store) => store.products);
-  // const alldata = useSelector((store) => store.products);
   const dispatch = useDispatch();
   const [counter, setCounter] = useState(1);
   const { slug } = useParams();
